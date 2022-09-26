@@ -1,7 +1,10 @@
 <template>
     <div>
         <h1>Parent</h1>
-        <ChildComponent></ChildComponent>
+        <input v-model="parentText">
+        <p>{{parentText}}</p>
+        <p>{{childText}}</p>
+        <ChildComponent :parent-text="parentText" @get-child-text="getChildText"></ChildComponent>
         
     </div>
 </template>
@@ -13,11 +16,17 @@ export default {
     name: "ParentComponent",
     data() {
         return {
-            ParentText: "Parent",
-            ChildText: "",
+            parentText: "Parent",
+            childText: "",
         };
     },
-    components: { ChildComponent }
+    components: { ChildComponent },
+    methods: {
+    getChildText(value) {
+      console.log(value); // Raja Tamil
+      this.childText = value;
+   }
+ }
 }
 </script>
 <style lang="de">
