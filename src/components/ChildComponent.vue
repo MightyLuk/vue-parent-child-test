@@ -1,10 +1,11 @@
 <template>
     <div>
-        <h1>Child</h1>
+        <h1>Child {{childId}}</h1>
         <input v-model="childText">
         <p>{{childText}}</p>
         <button @click="this.$emit('getChildText', this)">click me</button>
         <p>{{parentText}}</p>
+        <p v-if="clicked">clicked</p>
 
     </div>
 </template>
@@ -14,7 +15,8 @@ export default {
     props: {
         parentText: String,
         initChildText: String,
-        childId: Number
+        childId: Number,
+        clicked: Boolean
     },
     data() {
         return {
